@@ -5,14 +5,14 @@ class RomanNumeralGeneratorTest extends PHPUnit_Framework_TestCase
     public function testgenerate()
     {
         // Arrange
-        $a = new RomanNumeral();
+        $a = new RomanNumeralGenerator();
 
     }
     
     public function testparse()
     {
         // Arrange
-        $a = new RomanNumeral();
+        $a = new RomanNumeralGenerator();
         
         $result = $a->parse('I'); 
         // test
