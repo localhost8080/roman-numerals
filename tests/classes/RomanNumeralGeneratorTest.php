@@ -70,7 +70,9 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         // test
         $this->assertEquals('CM',$result);
         
-        
+        $result = $a->generate(999);
+        // test
+        $this->assertEquals('CMXCIX',$result);        
         
         
         

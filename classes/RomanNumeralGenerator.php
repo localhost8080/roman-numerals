@@ -91,6 +91,7 @@ class RomanNumeral implements RomanNumeralGenerator
         $result = str_replace('VIV', 'IX',$result);
         $result = str_replace('LXXXX', 'XC',$result);
         $result = str_replace('CCCC', 'CD',$result);
+        $result = str_replace('DCD', 'CM',$result);
         
         
         
