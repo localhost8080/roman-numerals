@@ -1,4 +1,4 @@
-*roman-numerals convertor
+# Roman-numerals convertor
 _________________
 by Jonathan Mitchell.
 
@@ -20,8 +20,7 @@ if method=parse|number = value
 if method=generate|string = value
 
 
-
-***parse function:
+### parse function:
 converts a roman number to an int
 
 there are lots of examples in the php documentation and on stackoverflow;
@@ -36,7 +35,7 @@ summing as we go (or if the next digit is less than the current digit, subtract 
 eg XIV becomes (rtl) VIX becomes 5-1+10 = 14
 this then becomes pretty easy and is just an if / else
 
-*** generate function:
+### generate function:
 generates a roman number from an int
 max value is 3999 (though in the function this can be changed with an input parameter)
 
@@ -52,12 +51,12 @@ final step is to str_replace IIII with IV, VIV with IX, etc
 [another way for larger numbers would be to loop through all the keys in the array who have '4' of a character and shift things round before creating out number]
 for speed, I went with the str_replace, though I wouldnt necessarily do this in a production environment
 
-*** Other functions
+### Other functions
 I added in a couple of helper functions:
 one to validate the roman numeral contains only MCDLXV or I characters
 one to validate that the int is < max val (default 3999) and is infact an int
 
-*** Notes
+### Notes
 code includes try / catch loops with exception handling
 while loops
 foreach loops
