@@ -132,17 +132,18 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
             // check if valid
             $result = $a->validate_roman(4);
         } catch (Exception $expected) {
-            return $expected->getMessage();
+            $result = $expected->getMessage();
         }
+        $this->assertEquals('Please enter strings only.', $result);
         
         // not a valid roman number
         try {
             // check if valid
             $result = $a->validate_roman('F');
         } catch (Exception $expected) {
-            return $expected->getMessage();
+            $result = $expected->getMessage();
         } 
-        
+        $this->assertEquals('Please use only M D C L X V I characters.', $result);
         
     }
 
@@ -170,32 +171,37 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
             // check if valid
             $result = $a->validate_arabic(4000);
         } catch (Exception $expected) {
-            return $expected->getMessage();
+            $result = $expected->getMessage();
         }
+        $this->assertEquals('Number too large, max value 3999.', $result);
         
         // not a valid roman number
         try {
             // check if valid
             $result = $a->validate_arabic(400000000);
         } catch (Exception $expected) {
-            return $expected->getMessage();
+            $result = $expected->getMessage();
         }
+        $this->assertEquals('Number too large, max value 3999.', $result);
+        
+        
         
         try {
             // check if valid
             $result = $a->validate_arabic('random string of things');
         } catch (Exception $expected) {
-            return $expected->getMessage();
+            $result = $expected->getMessage();
         }
+        $this->assertEquals('Please enter numbers only.', $result);
         
         // not a valid roman number
         try {
             // check if valid
             $result = $a->validate_arabic('M');
         } catch (Exception $expected) {
-            return $expected->getMessage();
+            $result = $expected->getMessage();
         }
-        
+        $this->assertEquals('Please enter numbers only.', $result);
         
     }
 }

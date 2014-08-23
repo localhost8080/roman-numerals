@@ -154,14 +154,14 @@ class RomanNumeral implements RomanNumeralGenerator
     {
         // check if its a string, if not, return false
         if (! is_string($string)) {
-            throw new Exception('Please enter strings only');
+            throw new Exception('Please enter strings only.');
         }
         // uppercase the string // not really needed, as we can use case-insensitive regex
         $string = strtoupper($string);
         // check if it only contains MDCLXVI characters
         $pattern = '/[MDCLXVI]/';
         if (! preg_match($pattern, $string)) {
-            throw new Exception('Please use only M D C L X V I characters');
+            throw new Exception('Please use only M D C L X V I characters.');
         }
         return true;
     }
