@@ -28,7 +28,7 @@ class RomanNumeral implements RomanNumeralGenerator
         'L' => '50',
         'C' => '100',
         'D' => '500',
-        'M' => '1000',
+        'M' => '1000'
     );
 
     /**
@@ -38,13 +38,12 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function generate($integer)
     {
-        // check if not an integer, then return false
-        if (! is_int($integer)) {
-            return 'Please enter numbers only.';
-        }
-        // check if its an int and its <= 3999, if not then return false
-        if (is_int($integer) && $integer > 3999) {
-            return 'Number too large, max value 3999.';
+        // check if valid
+        $valid = validate_arabic($integer);
+        // if its not explicitly 'true', then I've sent back some text
+        if ($valid !== TRUE) {
+            // return that
+            return $valid;
         }
         // we need some stacks
         // counter - keep track of the count of each letter we have
@@ -104,15 +103,12 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function parse($string)
     {
-        // check if its a string, if not, return false
-        if (! is_string($string)) {
-            return 'Please enter strings only';
-        }
-        // uppercase the string // not really needed, as we can use case-insensitive regex
-        $string = strtoupper($string);
-        // check if it only contains MDCLXVI characters
-        if (! preg_match($string, '/[MDCLXVI]/g')) {
-            return 'Please use only M D C L X V I characters';
+        // check if valid
+        $valid = validate_roman($string);
+        // if its not explicitly 'true', then I've sent back some text
+        if ($valid !== TRUE) {
+            // return that
+            return $valid;
         }
         // setup our running total to 0
         $running_total = 0;
@@ -149,5 +145,45 @@ class RomanNumeral implements RomanNumeralGenerator
         }
         // return the running total [the value of the string]
         return $running_total;
+    }
+
+    /**
+     * basic validator function to check if input has the correct parts to make a roman numeral
+     *
+     * @param string $string            
+     */
+    public function validate_roman($string)
+    {
+        // check if its a string, if not, return false
+        if (! is_string($string)) {
+            return 'Please enter strings only';
+        }
+        // uppercase the string // not really needed, as we can use case-insensitive regex
+        $string = strtoupper($string);
+        // check if it only contains MDCLXVI characters
+        if (! preg_match($string, '/[MDCLXVI]/g')) {
+            return 'Please use only M D C L X V I characters';
+        }
+        return true;
+    }
+
+    /**
+     * basic validator function to check if input is good to convert
+     * default max value = 3999
+     *
+     * @param integer $integer            
+     * @param integer $max            
+     */
+    public function validate_arabic($integer, $max = 3999)
+    {
+        // check if not an integer, then return false
+        if (! is_int($integer)) {
+            return 'Please enter numbers only.';
+        }
+        // check if its an int and its <= $max, if not then return false
+        if (is_int($integer) && $integer > $max) {
+            return "Number too large, max value $max.";
+        }
+        return true;
     }
 }
