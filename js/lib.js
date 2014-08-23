@@ -13,11 +13,15 @@ $(function() {
 
 function call_parse_api(object) {
     // call the parse function through our mini api
-    $.getJSON('/api/?method=parse', object.serialize(), show_result);
-    $('#number_results').html(object);
+    $.getJSON('/api/?method=parse', object.serialize(), function(){
+        $('#number_results').html(object);
+    });   
 }
+
 function call_generate_api(object) {
     // call the parse function through our mini api
-    $.getJSON('/api/?method=generate', object.serialize(), show_result);
-    $('#string_results').html(object);
+    $.getJSON('/api/?method=generate', object.serialize(), function(){
+        $('#string_results').html(object);
+    });
+    
 }
