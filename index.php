@@ -26,7 +26,8 @@
                 <fieldset>
                 <legend>Please input your value: eg 2014</legend>
                     <p>
-                        <label for="number">Number:</label> <input class="form-control" id="number" name="number" type="number" min="1" max="3999" required />
+                    <!-- we could use a number field for this, but I've kept as a text input so that I can show validation in the php code -->
+                        <label for="number">Number:</label> <input class="form-control" id="number" name="number" type="text" required />
                     </p>
                     <p class="alert alert-success"><b>Result: </b><span id="number_results"></span></p>
                 </fieldset>
