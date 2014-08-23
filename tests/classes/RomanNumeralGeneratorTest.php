@@ -74,7 +74,6 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         // test
         $this->assertEquals('CMXCIX',$result);        
         
-
         $result = $a->parse(2014);
         // test
         $this->assertEquals('MMXIV',$result);
