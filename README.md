@@ -2,7 +2,16 @@
 
 by Jonathan Mitchell.
 
-##Install / Requirements:
+
+[Install](#install)
+[Api](#api)
+[Code Explanation](#code)
+[Build Process Explanation](#build_process)
+[Notes](#notes)
+
+
+
+##Install:
 php 5.4 or 5.5 (though doesnt use namespaces, so should work on 5.3)
 
     git clone https://github.com/localhost8080/roman-numerals.git
@@ -12,7 +21,6 @@ navigate to [vhost]/index.php
 -----------
 
 ## Api
-
 
 There is an api (very basic, without proper validation, other than the built-in validation in the php class) that accesses the generate and parse methods of the class (returns data in json format)
 the api is used in the frontend as inputs are entered the data is queried and returned via a jquery ajax call and displayed in a results box
@@ -30,6 +38,7 @@ method|parse or generate
 if method=parse|number = value
 if method=generate|string = value
 
+##Code
 
 ### parse function:
 converts a roman number to an int
@@ -66,22 +75,17 @@ I added in a couple of helper functions:
 One to validate the roman numeral contains only MCDLXV or I characters.
 One to validate that the int is < max val (default 3999) and is infact an int.
 
-### Notes
-Code includes try / catch loops with exception handling
-While loops
-Foreach loops
-Arrays
-Variables
-Switch statements
-Oo things (eg data available within the scope of the class, though doesnt have any private methods etc)
+## Build Process
+
+Build / testing process
 
 I have included some phpunit tests (though they arent extensive, but demonstrate a few tests for each of the methods in the class implementation, including testing for expected exceptions)
 
-Builds / tests were performed on (travis-ci)[https://travis-ci.org/localhost8080/roman-numerals]
+Builds / tests were performed on [travis-ci](https://travis-ci.org/localhost8080/roman-numerals)
 
-Using php-unit and tested with phpcs using a modified version of the wordpress coding standard (though the project doesnt use wordpress itsself)
+Using [php-unit](http://phpunit.de/) and tested with [phpcs](https://github.com/squizlabs/PHP_CodeSniffer) using a modified version of the [wordpress coding standard](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards) (though the project doesnt use wordpress itsself)
 
-Version control system used was git on (github)[https://github.com/localhost8080/roman-numerals]
+Version control system used was git on [github](https://github.com/localhost8080/roman-numerals)
 
 
 Initial development and testing was performed on a centos 6 virtualbox with php 5.4 and apache and phpunit
@@ -96,6 +100,16 @@ simultaneously the centos 6 vitrualbox polls the github and downloads the new co
 
 -mesasges are sent to 'slack' which notifies the dev when the build process in travis is complete (and if its good or bad)
 -messages are sent to 'slack' which notifies the dev when a new commit has been pulled to the development box
+
+
+### Notes
+Code includes try / catch loops with exception handling
+While loops
+Foreach loops
+Arrays
+Variables
+Switch statements
+Oo things (eg data available within the scope of the class, though doesnt have any private methods etc)
 
 there is no roman number for 0
 
