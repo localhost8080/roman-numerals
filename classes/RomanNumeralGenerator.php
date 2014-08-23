@@ -44,14 +44,17 @@ class RomanNumeral implements RomanNumeralGenerator
         $counter = array();
         // keep whats left from our integer
         $remainder = $integer;
+        
+        // we need to go through our data array from largest to smallest, so we should copy it and flip it
+        $flipped_data = array_reverse($this->data);
 
-        foreach ($this->data as $key => $value) {
+        foreach ($flipped_data as $key => $value) {
         
             // check if the remainder is more than the current value of the letter
-            if ($remainder >= $this->data[$key]) {
+            if ($remainder >= $flipped_data[$key]) {
                 // dont really need to do this, but makes it easier to see the calculation
                 $x = $remainder;
-                $y = $this->data[$key];
+                $y = $flipped_data[$key];
         
                 // number of times its divisible
                 // integer minus the remainder divided by the value of the coin
