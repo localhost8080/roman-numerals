@@ -1,4 +1,7 @@
 <?php
+// normally we would have an autoloader
+include_once('../classes/RomanNumeralGenerator.php');
+
 
 class RomanNumeralGeneratorTest extends PHPUnit_Framework_TestCase
 {
