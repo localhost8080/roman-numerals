@@ -21,13 +21,22 @@
     <div class="container">
         <div class="col-xs-12">
             <h1 class="jumbotron">Roman Numerals</h1>
-            <form class="form" id="commentForm" method="get" action="">
+            <form class="form" id="numberForm" method="post" action="">
                 <fieldset>
-                    <legend>Please input your value:</legend>
+                    <legend>Please input your value: eg 2014</legend>
                     <p>
                         <label for="number">Number:</label> <input class="form-control" id="number" name="number" type="number" required />
                     </p>
-                    <div id="results"></div>
+                    <div id="number_results"></div>
+                </fieldset>
+            </form>
+            <form class="form" id="stringForm" method="post" action="">
+                <fieldset>
+                    <legend>Please input your value: eg MMXIV</legend>
+                    <p>
+                        <label for="string">String:</label> <input class="form-control" id="string" name="string" type="text" required />
+                    </p>
+                    <div id="string_results"></div>
                 </fieldset>
             </form>
         </div>
