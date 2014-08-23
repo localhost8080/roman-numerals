@@ -124,19 +124,15 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         $result = $a->validate_roman('I');
         // test
         $this->assertTrue($result);
-        
         $result = $a->validate_roman('V');
         // test
         $this->assertTrue($result);
-        
         $result = $a->validate_roman('X');
         // test
         $this->assertTrue($result);
-        
         $result = $a->validate_roman('C');
         // test
         $this->assertTrue($result);
-        
         // not a valid roman number
         try {
             // check if valid
@@ -145,16 +141,14 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
             $result = $expected->getMessage();
         }
         $this->assertEquals('Please enter strings only.', $result);
-        
         // not a valid roman number
         try {
             // check if valid
             $result = $a->validate_roman('F');
         } catch (Exception $expected) {
             $result = $expected->getMessage();
-        } 
+        }
         $this->assertEquals('Please use only M D C L X V I characters.', $result);
-        
     }
 
     public function testvalidate_arabic()
@@ -165,18 +159,13 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         $result = $a->validate_arabic(1);
         // test
         $this->assertTrue($result);
-        
         $result = $a->validate_arabic(4);
         // test
         $this->assertTrue($result);
-        
         $result = $a->validate_arabic(15);
         // test
         $this->assertTrue($result);
-        
-        
         // not valid ones
-        
         try {
             // check if valid
             $result = $a->validate_arabic(4000);
@@ -184,7 +173,6 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
             $result = $expected->getMessage();
         }
         $this->assertEquals('Number too large, max value 3999.', $result);
-        
         // not a valid roman number
         try {
             // check if valid
@@ -193,9 +181,6 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
             $result = $expected->getMessage();
         }
         $this->assertEquals('Number too large, max value 3999.', $result);
-        
-        
-        
         try {
             // check if valid
             $result = $a->validate_arabic('random string of things');
@@ -203,7 +188,6 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
             $result = $expected->getMessage();
         }
         $this->assertEquals('Please enter numbers only.', $result);
-        
         // not a valid roman number
         try {
             // check if valid
@@ -212,6 +196,5 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
             $result = $expected->getMessage();
         }
         $this->assertEquals('Please enter numbers only.', $result);
-        
     }
 }
