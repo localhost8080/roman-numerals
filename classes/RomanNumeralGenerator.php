@@ -38,6 +38,10 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function generate($integer)
     {
+        // check if its an int, if not, return false
+        if(!is_int($integer)){
+        	return false;
+        }
         
         // we need some stacks
         // counter - keep track of the count of each letter we have
@@ -102,7 +106,7 @@ class RomanNumeral implements RomanNumeralGenerator
 
     /**
      *
-     * @param unknown $string
+     * @param string $string
      *            convert from roman -> int
      *            works by reversing the string, taking the first letter getting its value from the $data array
      *            if the current letter has a value lower than the the previous letter, then it subtracts instead of
@@ -114,6 +118,10 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function parse($string)
     {
+        // check if its an int, if not, return false
+        if(!is_string($string)){
+            return false;
+        }
         // setup our running total to 0
         $running_total = 0;
         // reverse the $string -- note that this function is not multibyte safe,

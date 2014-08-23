@@ -74,11 +74,14 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         // test
         $this->assertEquals('CMXCIX',$result);        
         
-        $result = $a->parse(2014);
+        $result = $a->generate(2014);
         // test
         $this->assertEquals('MMXIV',$result);
         
-        
+        // what happens when we pass an incorrect data type
+        $result = $a->generate('string');
+        // test
+        $this->assertFalse($result);
         
     }
     
@@ -129,6 +132,12 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         $result = $a->parse('MMXIV');
         // test
         $this->assertEquals(2014,$result);
+        
+        // what if we pass an incorect data type
+        
+        $result = $a->parse(1000);
+        // test
+        $this->assertFalse($result);
         
         
     }
