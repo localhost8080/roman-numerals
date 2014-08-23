@@ -3,11 +3,11 @@
 by Jonathan Mitchell.
 
 Jump to:
--[Install](#install)
--[Api](#api)
--[Code Explanation](#code)
--[Build Process Explanation](#build_process)
--[Notes](#notes)
+ - [Install](#install)
+ - [Api](#api)
+ - [Code Explanation](#code)
+ - [Build Process Explanation](#build_process)
+ - [Notes](#notes)
 
 [![Build Status](https://travis-ci.org/localhost8080/roman-numerals.svg?branch=master)](https://travis-ci.org/localhost8080/roman-numerals)
 
