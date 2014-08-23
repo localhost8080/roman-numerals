@@ -1,8 +1,5 @@
 <?php
 
-// include the class
-require_once($_SERVER['DOCUMENT_ROOT'].'/classes/RomanNumeralsGenerator.php');
-
 class RomanNumeralGeneratorTest extends PHPUnit_Framework_TestCase
 {
     public function testgenerate()
