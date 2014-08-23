@@ -28,7 +28,7 @@ class RomanNumeral implements RomanNumeralGenerator
         'L' => '50',
         'C' => '100',
         'D' => '500',
-        'M' => '1000',
+        'M' => '1000'
     );
 
     /**
@@ -38,10 +38,15 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function generate($integer)
     {
-        // check if its an int and its <= 3999, or if not an integer, then return false
-        if (! is_int($integer) || (is_int($integer) && $integer > 3999 ) ) {
-            return false;
+        // check if not an integer, then return false
+        if (! is_int($integer)) {
+            return 'Please enter numbers only.';
         }
+        // check if its an int and its <= 3999, if not then return false
+        if (is_int($integer) && $integer > 3999) {
+            return 'Number too large, max value 3999.';
+        }
+        
         
         // we need some stacks
         // counter - keep track of the count of each letter we have
@@ -135,7 +140,7 @@ class RomanNumeral implements RomanNumeralGenerator
             $previous_value = $current_value;
             // wrong place really to check, but see if its > 3999 and return if its over this
             if ($running_total > 3999) {
-                return false;
+                return 'Max supported value 3999.';
             }
         }
         // return the running total [the value of the string]
