@@ -1,7 +1,6 @@
-roman-numerals
-==============
-
-roman numeral calculator
+*roman-numerals convertor
+_________________
+by Jonathan Mitchell.
 
 to run:
 php 5.4 or 5.5 (though doesnt use namespaces, so should work on 5.3)
@@ -9,25 +8,20 @@ navigate to [vhost]/index.php
 
 enter numbers or strings
 
-
 api available at:
 vhost/api/index.php
 
 takes post or request inputs:
 
-parameter   value
-method      parse or generate
-
-if method=parse
-number = value
-
-if method=generate
-string = value
+parameter|value
+---------|--------
+method|parse or generate
+if method=parse|number = value
+if method=generate|string = value
 
 
 
-
-parse function:
+***parse function:
 converts a roman number to an int
 
 there are lots of examples in the php documentation and on stackoverflow;
@@ -42,7 +36,7 @@ summing as we go (or if the next digit is less than the current digit, subtract 
 eg XIV becomes (rtl) VIX becomes 5-1+10 = 14
 this then becomes pretty easy and is just an if / else
 
-generate function:
+*** generate function:
 generates a roman number from an int
 max value is 3999 (though in the function this can be changed with an input parameter)
 
@@ -58,10 +52,12 @@ final step is to str_replace IIII with IV, VIV with IX, etc
 [another way for larger numbers would be to loop through all the keys in the array who have '4' of a character and shift things round before creating out number]
 for speed, I went with the str_replace, though I wouldnt necessarily do this in a production environment
 
+*** Other functions
 I added in a couple of helper functions:
 one to validate the roman numeral contains only MCDLXV or I characters
 one to validate that the int is < max val (default 3999) and is infact an int
 
+*** Notes
 code includes try / catch loops with exception handling
 while loops
 foreach loops
@@ -95,7 +91,7 @@ There is an api (very basic, without proper validation, other than the built-in 
 the api is used in the frontend as inputs are entered the data is queried and returned via a jquery ajax call and displayed in a results box
 I made one form for each of the two parse and generate methods
 
--- notes
+
 there is no roman number for 0
 while this task is designed to build some code from scratch with tests, etc, in a production environment its not always advisable to re-invent the wheel:
 the zend framework 1 has a comprehensive library for all sorts of conversions
