@@ -115,7 +115,7 @@ class RomanNumeral implements RomanNumeralGenerator
         // on first run we need to set the 'previous value' to be 0
         $previous_value = 0;
         // drop the UPPERCASE versions of characters from the string into an array -- this allows us to foreach
-        $string = strrev();
+        $string = strrev($string);
         // the array $letters will have the roman letter as the value in the k/v/ pair
         $letters = str_split($string);
         // loop through each letter
