@@ -159,7 +159,8 @@ class RomanNumeral implements RomanNumeralGenerator
         // uppercase the string // not really needed, as we can use case-insensitive regex
         $string = strtoupper($string);
         // check if it only contains MDCLXVI characters
-        if (! preg_match($string, '/[MDCLXVI]/g')) {
+        $pattern = '/[MDCLXVI]/';
+        if (! preg_match($pattern, $string)) {
             throw new Exception('Please use only M D C L X V I characters');
         }
         return true;
