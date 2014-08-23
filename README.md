@@ -72,6 +72,24 @@ oo things (eg data available within the scope of the class, though doesnt have a
 
 I have included some phpunit tests (though they arent extensive, but demonstrate a few tests for each of the methods in the class implementation, including testing for expected exceptions)
 
+builds / tests were performed on travis-ci
+[url in here]
+using php-unit and tested with phpcs using a modified version of the wordpress coding standard (though the project doesnt use wordpress itsself)
+
+version control system used was git (on github)
+
+initial development and testing was performed on a centos 6 virtualbox with php 5.4 and apache and phpunit
+
+the build process is as follows:
+code edited in eclipse on a mac
+commits made to github
+travis-ci polls github for new commits and pulls 'head' revision on changes
+travis-ci performs build and unit-tests
+
+simultaneously the centos 6 vitrualbox polls the github and downloads the new code
+
+mesasges are sent to 'slack' which notifies the dev when the build process in travis is complete (and if its good or bad)
+messages are sent to 'slack' which notifies the dev when a new commit has been pulled to the development box
 
 There is an api (very basic, without proper validation, other than the built-in validation in the php class) that accesses the generate and parse methods of the class (returns data in json format)
 the api is used in the frontend as inputs are entered the data is queried and returned via a jquery ajax call and displayed in a results box
