@@ -14,14 +14,14 @@ $(function() {
 function call_parse_api(object) {
     // call the parse function through our mini api
     $.getJSON('/api/?method=parse', object.serialize(), function(){
-        $('#number_results').html(object);
+        $('#string_results').html(this);
     });   
 }
 
 function call_generate_api(object) {
     // call the parse function through our mini api
     $.getJSON('/api/?method=generate', object.serialize(), function(){
-        $('#string_results').html(object);
+        $('#number_results').html(this);
     });
     
 }
