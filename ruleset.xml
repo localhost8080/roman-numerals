@@ -12,5 +12,7 @@
         <exclude name="WordPress.Functions.FunctionCallSignature"/>
         <exclude name="WordPress.XSS.EscapeOutput"/>
         <exclude name="WordPress.VIP.ValidatedSanitizedInput"/>
+        <exclude name="WordPress.WhiteSpace.OperatorSpacing"/>
+        <exclude name="WordPress.Arrays.ArrayDeclaration"/>
     </rule>
 </ruleset>
