@@ -28,7 +28,7 @@ class RomanNumeral implements RomanNumeralGenerator
         'L' => '50',
         'C' => '100',
         'D' => '500',
-        'M' => '1000'
+        'M' => '1000',
     );
 
     /**
@@ -46,8 +46,6 @@ class RomanNumeral implements RomanNumeralGenerator
         if (is_int($integer) && $integer > 3999) {
             return 'Number too large, max value 3999.';
         }
-        
-        
         // we need some stacks
         // counter - keep track of the count of each letter we have
         $counter = array();
@@ -106,9 +104,15 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function parse($string)
     {
-        // check if its an int, if not, return false
+        // check if its a string, if not, return false
         if (! is_string($string)) {
-            return false;
+            return 'Please enter strings only';
+        }
+        // uppercase the string // not really needed, as we can use case-insensitive regex
+        $string = strtoupper($string);
+        // check if it only contains MDCLXVI characters
+        if (! preg_match($string, '/[MDCLXVI]/g')) {
+            return 'Please use only M D C L X V I characters';
         }
         // setup our running total to 0
         $running_total = 0;
@@ -116,8 +120,8 @@ class RomanNumeral implements RomanNumeralGenerator
         // but MCXVI and 0-9 are not multibyte characters...
         // on first run we need to set the 'previous value' to be 0
         $previous_value = 0;
-        $string = strrev($string);
-        // drop the characters from the string into an array -- this allows us to foreach
+        // drop the UPPERCASE versions of characters from the string into an array -- this allows us to foreach
+        $string = strrev();
         // the array $letters will have the roman letter as the value in the k/v/ pair
         $letters = str_split($string);
         // loop through each letter
