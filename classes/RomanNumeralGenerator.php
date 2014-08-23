@@ -39,8 +39,8 @@ class RomanNumeral implements RomanNumeralGenerator
     public function generate($integer)
     {
         try {
-            // check if valid
-            $this->validate_arabic($integer);
+            // check if valid, though we are casting it as an int, so it wont fail that part :|
+            $this->validate_arabic((int)$integer);
         } catch (Exception $e) {
             return $e->getMessage();
         }
