@@ -60,9 +60,14 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         // test
         $this->assertEquals('MMXIV', $result);
         // what happens when we pass an incorrect data type
-        $result = $a->generate('string');
-        // test
-        $this->assertFalse($result);
+        // this is actually tested in the validate methods below
+        try {
+            // check if valid
+            $result = $a->generate('random string of things');
+        } catch (Exception $expected) {
+            $result = $expected->getMessage();
+        }
+        $this->assertEquals('Please enter numbers only.', $result);
     }
 
     public function testparse()
@@ -101,9 +106,14 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         // test
         $this->assertEquals(2014, $result);
         // what if we pass an incorect data type
-        $result = $a->parse(1000);
-        // test
-        $this->assertFalse($result);
+        // not a valid roman number
+        try {
+            // check if valid
+            $result = $a->parse(4);
+        } catch (Exception $expected) {
+            $result = $expected->getMessage();
+        }
+        $this->assertEquals('Please enter strings only.', $result);
     }
 
     public function testvalidate_roman()
