@@ -38,10 +38,11 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function generate($integer)
     {
-        // check if its an int and its <= 3999, if not, return false
-        if (! is_int($integer) && $integer <= 3999) {
+        // check if its an int and its <= 3999, or if not an integer, then return false
+        if (! is_int($integer) || (is_int($integer) && $integer > 3999 ) ) {
             return false;
         }
+        
         // we need some stacks
         // counter - keep track of the count of each letter we have
         $counter = array();
