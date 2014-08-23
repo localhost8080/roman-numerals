@@ -16,11 +16,15 @@ interface RomanNumeralGenerator
 
 class RomanNumeral implements RomanNumeralGenerator
 {
-
+    // gets values from the table here: http://en.wikipedia.org/wiki/Roman_numeral
     public $data = array(
         'I' => '1',
         'V' => '5',
         'X' => '10',
+        'L' => '50',
+        'C' => '100',
+        'D' => '500',
+        'M' => '1000',
     );
 
     /**
@@ -39,6 +43,9 @@ class RomanNumeral implements RomanNumeralGenerator
      *            works by reversing the string, taking the first letter getting its value from the $data array
      *            if the current letter has a value lower than the the previous letter, then it subtracts instead of
      *            adds.
+     *            
+     *            this function doesnt check to see if we have a valid roman nummeral, that should be in a validate function
+     *            -- ill add one in if I have time
      */
     public function parse($string)
     {
