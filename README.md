@@ -118,3 +118,8 @@ the zend framework 1 has a comprehensive library for all sorts of conversions (h
 this component could easilly be used on on its own or alongside zf2 within a larger application, eg using composer
 
 there is also a PEAR library for roman numeral conversion (though the code is no longer maintained, it suports conversion of numbers up to 5,999,999)
+
+there is no testing of the lib.js (easily fixed with jslint)
+there is no testing of the html output (generally run through w3 validator or equivalent)
+
+
