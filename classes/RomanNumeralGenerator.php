@@ -16,7 +16,11 @@ interface RomanNumeralGenerator
 
 class RomanNumeral implements RomanNumeralGenerator
 {
-    // gets values from the table here: http://en.wikipedia.org/wiki/Roman_numeral
+
+    /**
+     * a wee array of roman numerals and their corresponding values
+     * gets values from the table here: http://en.wikipedia.org/wiki/Roman_numeral
+     */
     public $data = array(
         'I' => '1',
         'V' => '5',
@@ -24,7 +28,7 @@ class RomanNumeral implements RomanNumeralGenerator
         'L' => '50',
         'C' => '100',
         'D' => '500',
-        'M' => '1000',
+        'M' => '1000'
     );
 
     /**
@@ -34,6 +38,53 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function generate($integer)
     {
+        
+        // we need some stacks
+        // counter - keep track of the count of each letter we have
+        $counter = array();
+        // keep whats left from our integer
+        $remainder = $integer;
+
+        foreach ($data as $key => $value) {
+        
+            // check if the remainder is more than the current value of the letter
+            if ($remainder >= $data[$key]) {
+                // dont really need to do this, but makes it easier to see the calculation
+                $x = $remainder;
+                $y = $data[$key];
+        
+                // number of times its divisible
+                // integer minus the remainder divided by the value of the coin
+                // remainder is x mod y
+                $z = ( $x - ( $x % $y ) ) / $y;
+        
+                // set the remainder
+                $remainder = $x % $y;
+        
+                // push it into the counter array
+                $counter[$key] = $z;
+        
+            }
+        
+        }
+        
+        // set our result to blank
+        $result = '';
+        
+        // there is probably a much simpler way to do this
+        // go through our array and flatten it out
+        foreach ($counter as $key => $count){
+        	// spit them out the number of times they are in the array
+            while($count > 0){
+                $result .= $key;
+                $count--;
+        	}
+        }
+        // this doesnt work for IV or IX or CM, but that can be fixed
+        
+        return $result;
+        
+        
     }
 
     /**
@@ -44,7 +95,8 @@ class RomanNumeral implements RomanNumeralGenerator
      *            if the current letter has a value lower than the the previous letter, then it subtracts instead of
      *            adds.
      *            
-     *            this function doesnt check to see if we have a valid roman nummeral, that should be in a validate function
+     *            this function doesnt check to see if we have a valid roman nummeral, that should be in a validate
+     *            function
      *            -- ill add one in if I have time
      */
     public function parse($string)
