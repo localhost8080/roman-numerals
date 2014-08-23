@@ -6,14 +6,16 @@ $roman_numeral = new RomanNumeral();
 
 // this could be simplified
 // also, we dont sanitise the $_REQUEST
-// though there are loads of ways to do it
+// though there are loads of ways to do it, but I've left is out of here to show in the basic class construct
+// I wouldnt recommend this for a production machine though, as there should be a separate validation class 
+// for all input methods with proper exceptions and response messages
 
 switch($_REQUEST['method']){
 	case parse:
-	    $result = $roman_numeral->parse((string) $_REQUEST['string']);
+	    $result = $roman_numeral->parse($_REQUEST['string']);
 	    break;
 	case generate:
-	    $result = $roman_numeral->generate((int) $_REQUEST['number']);
+	    $result = $roman_numeral->generate($_REQUEST['number']);
 	    break;
 }
 
