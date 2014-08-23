@@ -40,7 +40,7 @@ class RomanNumeral implements RomanNumeralGenerator
     {
         try {
             // check if valid, though we are casting it as an int, so it wont fail that part :|
-            $this->validate_arabic((int)$integer);
+            $this->validate_arabic($integer);
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -175,14 +175,15 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function validate_arabic($integer, $max = 3999)
     {
-        // check if not an integer, then return false
-        // this wont get triggered as I cast as an int on the call to this function, 
-        // but others might not
-        if (! is_int($integer)) {
+        // check if not an integer, then return false (we cant actually use is_int because when being passed from json, our number is a string
+        // and is_numeric wont catch floats)
+
+        $pattern = '/[0-9]/';
+        if (! preg_match($pattern, $string)) {
             throw new Exception('Please enter numbers only.');
         }
-        // check if its an int and its <= $max, if not then return false
-        if (is_int($integer) && $integer > $max) {
+        // check if its base10 int value is <= $max, if not then return false
+        if ( intval($integer, 10) > $max) {
             throw new Exception("Number too large, max value $max.");
         }
         return true;
