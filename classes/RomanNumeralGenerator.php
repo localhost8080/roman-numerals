@@ -176,6 +176,8 @@ class RomanNumeral implements RomanNumeralGenerator
     public function validate_arabic($integer, $max = 3999)
     {
         // check if not an integer, then return false
+        // this wont get triggered as I cast as an int on the call to this function, 
+        // but others might not
         if (! is_int($integer)) {
             throw new Exception('Please enter numbers only.');
         }
