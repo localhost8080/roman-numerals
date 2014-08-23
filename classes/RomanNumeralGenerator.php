@@ -159,7 +159,7 @@ class RomanNumeral implements RomanNumeralGenerator
         // uppercase the string // not really needed, as we can use case-insensitive regex
         $string = strtoupper($string);
         // check if it only contains MDCLXVI characters
-        $pattern = '/[MDCLXVI]/';
+        $pattern = '/[MDCLXVI]/g';
         if (! preg_match($pattern, $string)) {
             throw new Exception('Please use only M D C L X V I characters.');
         }
@@ -178,7 +178,7 @@ class RomanNumeral implements RomanNumeralGenerator
         // check if not an integer, then return false (we cant actually use is_int because when being passed from json, our number is a string
         // and is_numeric wont catch floats)
 
-        $pattern = '/[0-9]/';
+        $pattern = '/[1-9]/g';
         if (! preg_match($pattern, $string)) {
             throw new Exception('Please enter numbers only.');
         }
