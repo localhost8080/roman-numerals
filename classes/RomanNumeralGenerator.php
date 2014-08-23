@@ -18,9 +18,9 @@ class RomanNumeral implements RomanNumeralGenerator
 {
 
     public $data = array(
-        "I" => "1",
-        "V" => "5",
-        "X" => "10"
+        'I' => '1',
+        'V' => '5',
+        'X' => '10'
     );
 
     /**
