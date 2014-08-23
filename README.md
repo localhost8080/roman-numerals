@@ -22,9 +22,9 @@ navigate to [vhost]/index.php
 
 ## Api
 
-There is an api (very basic, without proper validation, other than the built-in validation in the php class) that accesses the generate and parse methods of the class (returns data in json format)
-the api is used in the frontend as inputs are entered the data is queried and returned via a jquery ajax call and displayed in a results box
-I made one form for each of the two parse and generate methods
+There is an api (very basic, without proper validation, other than the built-in validation in the php class).
+The Api accesses the generate and parse methods of the class (returns data in json format). The api is used in the frontend as inputs are entered the data is queried and returned via a jquery ajax call and displayed in a results box.
+I made one form for each of the two parse and generate methods.
 
 Api available at:
 vhost/api/index.php
