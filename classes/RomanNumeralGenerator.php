@@ -48,7 +48,7 @@ class RomanNumeral implements RomanNumeralGenerator
         foreach ($this->data as $key => $value) {
         
             // check if the remainder is more than the current value of the letter
-            if ($remainder >= $data[$key]) {
+            if ($remainder >= $this->data[$key]) {
                 // dont really need to do this, but makes it easier to see the calculation
                 $x = $remainder;
                 $y = $data[$key];
