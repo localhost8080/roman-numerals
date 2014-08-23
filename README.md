@@ -2,14 +2,14 @@
 
 by Jonathan Mitchell.
 
+Jump to:
+-[Install](#install)
+-[Api](#api)
+-[Code Explanation](#code)
+-[Build Process Explanation](#build_process)
+-[Notes](#notes)
 
-[Install](#install)
-[Api](#api)
-[Code Explanation](#code)
-[Build Process Explanation](#build_process)
-[Notes](#notes)
-
-
+[![Build Status](https://travis-ci.org/localhost8080/roman-numerals.svg?branch=master)](https://travis-ci.org/localhost8080/roman-numerals)
 
 ##Install:
 php 5.4 or 5.5 (though doesnt use namespaces, so should work on 5.3)
@@ -102,7 +102,7 @@ simultaneously the centos 6 vitrualbox polls the github and downloads the new co
 -messages are sent to 'slack' which notifies the dev when a new commit has been pulled to the development box
 
 
-### Notes
+## Notes
 Code includes try / catch loops with exception handling
 While loops
 Foreach loops
