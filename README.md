@@ -1,15 +1,20 @@
 # Roman-numerals convertor
-_________________
+
 by Jonathan Mitchell.
 
-to run:
+##Install / Requirements:
 php 5.4 or 5.5 (though doesnt use namespaces, so should work on 5.3)
-navigate to [vhost]/index.php
 
-enter numbers or strings
+    git clone https://github.com/localhost8080/roman-numerals.git
+
+navigate to [vhost]/index.php
+-----------
+
+## Api
 
 api available at:
 vhost/api/index.php
+
 
 takes post or request inputs:
 
