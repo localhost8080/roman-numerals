@@ -90,26 +90,29 @@ Version control system used was git on [github](https://github.com/localhost8080
 
 Initial development and testing was performed on a centos 6 virtualbox with php 5.4 and apache and phpunit
 
--the build process is as follows:
--code edited in eclipse on a mac
--commits made to github
--travis-ci polls github for new commits and pulls 'head' revision on changes
--travis-ci performs build and unit-tests
+The build process is as follows:
+ - code edited in eclipse on a mac
+ - commits made to github
+ - travis-ci polls github for new commits and pulls 'head' revision on changes
+ - travis-ci performs build and unit-tests
 
 simultaneously the centos 6 vitrualbox polls the github and downloads the new code
 
--mesasges are sent to 'slack' which notifies the dev when the build process in travis is complete (and if its good or bad)
--messages are sent to 'slack' which notifies the dev when a new commit has been pulled to the development box
+ - mesasges are sent to 'slack' which notifies the dev when the build process in travis is complete (and if its good or bad)
+ - messages are sent to 'slack' which notifies the dev when a new commit has been pulled to the development box
 
 
 ## Notes
-Code includes try / catch loops with exception handling
-While loops
-Foreach loops
-Arrays
-Variables
-Switch statements
-Oo things (eg data available within the scope of the class, though doesnt have any private methods etc)
+
+Code includes:
+
+ - Try / catch loops with exception handling
+ - While loops
+ - Foreach loops
+ - Arrays
+ - Variables
+ - Switch statements
+ - Basic Oo things (eg inheritance, data available within the scope of the class, though doesnt have any private methods / isnt a singleton, doesnt need a constructor, etc etc)
 
 there is no roman number for 0
 
