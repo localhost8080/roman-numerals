@@ -88,6 +88,8 @@ class RomanNumeral implements RomanNumeralGenerator
         
         // really stupid way for now:
         $result = str_replace('IIII', 'IV',$result);
+        $result = str_replace('VIV', 'IX',$result);
+        
         
         return $result;
         
