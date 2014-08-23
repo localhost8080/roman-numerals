@@ -38,12 +38,11 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function generate($integer)
     {
-        // check if valid
-        $valid = validate_arabic($integer);
-        // if its not explicitly 'true', then I've sent back some text
-        if ($valid !== TRUE) {
-            // return that
-            return $valid;
+        try {
+            // check if valid
+            $this->validate_arabic($integer);
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
         // we need some stacks
         // counter - keep track of the count of each letter we have
@@ -103,12 +102,11 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function parse($string)
     {
-        // check if valid
-        $valid = validate_roman($string);
-        // if its not explicitly 'true', then I've sent back some text
-        if ($valid !== TRUE) {
-            // return that
-            return $valid;
+        try {
+            // check if valid
+            $valid = $this->validate_roman($string);
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
         // setup our running total to 0
         $running_total = 0;
@@ -156,13 +154,13 @@ class RomanNumeral implements RomanNumeralGenerator
     {
         // check if its a string, if not, return false
         if (! is_string($string)) {
-            return 'Please enter strings only';
+            throw new Exception('Please enter strings only');
         }
         // uppercase the string // not really needed, as we can use case-insensitive regex
         $string = strtoupper($string);
         // check if it only contains MDCLXVI characters
         if (! preg_match($string, '/[MDCLXVI]/g')) {
-            return 'Please use only M D C L X V I characters';
+            throw new Exception('Please use only M D C L X V I characters');
         }
         return true;
     }
@@ -178,11 +176,11 @@ class RomanNumeral implements RomanNumeralGenerator
     {
         // check if not an integer, then return false
         if (! is_int($integer)) {
-            return 'Please enter numbers only.';
+            throw new Exception('Please enter numbers only.');
         }
         // check if its an int and its <= $max, if not then return false
         if (is_int($integer) && $integer > $max) {
-            return "Number too large, max value $max.";
+            throw new Exception("Number too large, max value $max.");
         }
         return true;
     }
