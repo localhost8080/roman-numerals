@@ -9,13 +9,34 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
     {
         // Arrange
         $a = new RomanNumeral();
+        
+        // some tests, by far these are not great
+        
+        $result = $a->generate(1);
+        // test
+        $this->assertEquals('I',$result);
 
+        $result = $a->generate(2);
+        // test
+        $this->assertEquals('II',$result);
+        
+        $result = $a->generate(3);
+        // test
+        $this->assertEquals('III',$result);
+        
+        $result = $a->generate(5);
+        // test
+        $this->assertEquals('V',$result);
+        
     }
     
     public function testparse()
     {
         // Arrange
         $a = new RomanNumeral();
+        
+        
+        // some tests, by far these are not great
         
         $result = $a->parse('I'); 
         // test
@@ -52,6 +73,11 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         $result = $a->parse('XIX');
         // test
         $this->assertEquals(19,$result);
+
+        $result = $a->parse('MMXIV');
+        // test
+        $this->assertEquals(2014,$result);
+        
         
     }
 
