@@ -18,7 +18,9 @@ before_script:
 script:
 
 - /tmp/phpcs/scripts/phpcs -p -s -v -n --standard=ruleset.xml --extensions=php .
-- phpunit tests
+- TEST_DIR=$(pwd)
+- cd tests/classes
+- phpunit .
 
 notifications:
   email: false
