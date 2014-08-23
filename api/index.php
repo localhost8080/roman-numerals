@@ -4,7 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/classes/RomanNumeralGenerator.php';
 
 $roman_numeral = new RomanNumeral();
 
-print_r($POST);
+print_r($_POST);
 
 switch($_POST['method']){
 	case parse:
