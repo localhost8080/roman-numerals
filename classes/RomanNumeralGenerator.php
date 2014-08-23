@@ -28,7 +28,7 @@ class RomanNumeral implements RomanNumeralGenerator
         'L' => '50',
         'C' => '100',
         'D' => '500',
-        'M' => '1000'
+        'M' => '1000',
     );
 
     /**
@@ -39,69 +39,51 @@ class RomanNumeral implements RomanNumeralGenerator
     public function generate($integer)
     {
         // check if its an int, if not, return false
-        if(!is_int($integer)){
-        	return false;
+        if ( ! is_int($integer)) {
+            return false;
         }
-        
         // we need some stacks
         // counter - keep track of the count of each letter we have
         $counter = array();
         // keep whats left from our integer
         $remainder = $integer;
-        
         // we need to go through our data array from largest to smallest, so we should copy it and flip it
         $flipped_data = array_reverse($this->data);
-
         foreach ($flipped_data as $key => $value) {
-        
             // check if the remainder is more than the current value of the letter
             if ($remainder >= $flipped_data[$key]) {
                 // dont really need to do this, but makes it easier to see the calculation
                 $x = $remainder;
                 $y = $flipped_data[$key];
-        
                 // number of times its divisible
                 // integer minus the remainder divided by the value of the coin
                 // remainder is x mod y
-                $z = ( $x - ( $x % $y ) ) / $y;
-        
+                $z = ($x - ($x % $y)) / $y;
                 // set the remainder
                 $remainder = $x % $y;
-        
                 // push it into the counter array
                 $counter[$key] = $z;
-        
             }
-        
         }
-        
         // set our result to blank
         $result = '';
-        
         // there is probably a much simpler way to do this
         // go through our array and flatten it out
-        foreach ($counter as $key => $count){
-                        
-        	// spit them out the number of times they are in the array
-            while($count > 0){
+        foreach ($counter as $key => $count) {
+            // spit them out the number of times they are in the array
+            while ($count > 0) {
                 $result .= $key;
-                $count--;
-        	}
+                $count --;
+            }
         }
         // this doesnt work for IV or IX or CM, but that can be fixed
-        
         // really stupid way for now:
-        $result = str_replace('IIII', 'IV',$result);
-        $result = str_replace('VIV', 'IX',$result);
-        $result = str_replace('LXXXX', 'XC',$result);
-        $result = str_replace('CCCC', 'CD',$result);
-        $result = str_replace('DCD', 'CM',$result);
-        
-        
-        
+        $result = str_replace('IIII', 'IV', $result);
+        $result = str_replace('VIV', 'IX', $result);
+        $result = str_replace('LXXXX', 'XC', $result);
+        $result = str_replace('CCCC', 'CD', $result);
+        $result = str_replace('DCD', 'CM', $result);
         return $result;
-        
-        
     }
 
     /**
@@ -119,7 +101,7 @@ class RomanNumeral implements RomanNumeralGenerator
     public function parse($string)
     {
         // check if its an int, if not, return false
-        if(!is_string($string)){
+        if ( ! is_string($string)) {
             return false;
         }
         // setup our running total to 0
