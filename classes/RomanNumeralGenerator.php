@@ -20,7 +20,7 @@ class RomanNumeral implements RomanNumeralGenerator
     public $data = array(
         'I' => '1',
         'V' => '5',
-        'X' => '10'
+        'X' => '10',
     );
 
     /**
@@ -68,7 +68,7 @@ class RomanNumeral implements RomanNumeralGenerator
             } else {
                 $running_total = $running_total + $current_value;
             }
-            // set the previous value
+            // set the previous value, so we can check it next time round the loop
             $previous_value = $current_value;
         }
         // return the running total [the value of the string]
