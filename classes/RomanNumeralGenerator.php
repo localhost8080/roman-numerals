@@ -38,8 +38,8 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function generate($integer)
     {
-        // check if its an int, if not, return false
-        if ( ! is_int($integer)) {
+        // check if its an int and its <= 3999, if not, return false
+        if (! is_int($integer) && $integer <= 3999) {
             return false;
         }
         // we need some stacks
@@ -101,7 +101,7 @@ class RomanNumeral implements RomanNumeralGenerator
     public function parse($string)
     {
         // check if its an int, if not, return false
-        if ( ! is_string($string)) {
+        if (! is_string($string)) {
             return false;
         }
         // setup our running total to 0
@@ -132,6 +132,10 @@ class RomanNumeral implements RomanNumeralGenerator
             }
             // set the previous value, so we can check it next time round the loop
             $previous_value = $current_value;
+            // wrong place really to check, but see if its > 3999 and return if its over this
+            if ($running_total > 3999) {
+                return false;
+            }
         }
         // return the running total [the value of the string]
         return $running_total;

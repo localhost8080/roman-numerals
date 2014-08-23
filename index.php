@@ -26,9 +26,9 @@
                 <fieldset>
                 <legend>Please input your value: eg 2014</legend>
                     <p>
-                        <label for="number">Number:</label> <input class="form-control" id="number" name="number" type="number" required />
+                        <label for="number">Number:</label> <input class="form-control" id="number" name="number" type="number" min="1" max="3999" required />
                     </p>
-                    <p class="alert alert-success">Result: <span id="number_results"></span></p>
+                    <p class="alert alert-success"><b>Result: </b><span id="number_results"></span></p>
                 </fieldset>
             </form>
             <form class="form" id="stringForm" method="post" action="">
@@ -37,7 +37,7 @@
                     <p>
                         <label for="string">String:</label> <input class="form-control" id="string" name="string" type="text" required />
                     </p>
-                    <p class="alert alert-success">Result: <span id="string_results"></span></p>
+                    <p class="alert alert-success"><b>Result: </b><span id="string_results"></span></p>
                 </fieldset>
             </form>
         </div>
