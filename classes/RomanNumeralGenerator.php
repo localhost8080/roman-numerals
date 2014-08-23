@@ -51,7 +51,7 @@ class RomanNumeral implements RomanNumeralGenerator
             if ($remainder >= $this->data[$key]) {
                 // dont really need to do this, but makes it easier to see the calculation
                 $x = $remainder;
-                $y = $data[$key];
+                $y = $this->data[$key];
         
                 // number of times its divisible
                 // integer minus the remainder divided by the value of the coin
