@@ -28,6 +28,54 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         // test
         $this->assertEquals('V',$result);
         
+        $result = $a->generate(10);
+        // test
+        $this->assertEquals('X',$result);
+        
+        $result = $a->generate(50);
+        // test
+        $this->assertEquals('L',$result);
+        
+        $result = $a->generate(100);
+        // test
+        $this->assertEquals('C',$result);
+        
+        $result = $a->generate(500);
+        // test
+        $this->assertEquals('D',$result);
+        
+        $result = $a->generate(1000);
+        // test
+        $this->assertEquals('M',$result);
+        
+        // trickier ones
+        
+        $result = $a->generate(4);
+        // test
+        $this->assertEquals('IV',$result);
+        
+        $result = $a->generate(9);
+        // test
+        $this->assertEquals('IX',$result);
+        
+        $result = $a->generate(90);
+        // test
+        $this->assertEquals('XC',$result);
+
+        $result = $a->generate(400);
+        // test
+        $this->assertEquals('CD',$result);
+        
+        $result = $a->generate(900);
+        // test
+        $this->assertEquals('CM',$result);
+        
+        
+        
+        
+        
+        
+        
     }
     
     public function testparse()

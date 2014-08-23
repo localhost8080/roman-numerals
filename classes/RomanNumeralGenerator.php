@@ -77,6 +77,10 @@ class RomanNumeral implements RomanNumeralGenerator
         // there is probably a much simpler way to do this
         // go through our array and flatten it out
         foreach ($counter as $key => $count){
+            
+            // probably not the right way:
+            // if the count of this is >= 4 and the letter is an I or a C
+            
         	// spit them out the number of times they are in the array
             while($count > 0){
                 $result .= $key;
