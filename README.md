@@ -3,8 +3,32 @@ roman-numerals
 
 roman numeral calculator
 
+to run:
+php 5.4 or 5.5 (though doesnt use namespaces, so should work on 5.3)
+navigate to [vhost]/index.php
+
+enter numbers or strings
+
+
+api available at:
+vhost/api/index.php
+
+takes post or request inputs:
+
+parameter   value
+method      parse or generate
+
+if method=parse
+number = value
+
+if method=generate
+string = value
+
+
+
 
 parse function:
+converts a roman number to an int
 
 there are lots of examples in the php documentation and on stackoverflow;
 rather than use one of those (they should be fine with testing) im going to write my own
@@ -19,10 +43,42 @@ eg XIV becomes (rtl) VIX becomes 5-1+10 = 14
 this then becomes pretty easy and is just an if / else
 
 generate function:
-the generate function
+generates a roman number from an int
+max value is 3999 (though in the function this can be changed with an input parameter)
 
+basic working is:
+take a value from an array (with an associated letter)
+see how many times the input number can be divided by the reference number
+pop those values onto a stack
+add the remainder to a variable and loop through till there is no remainder left
+
+then loop through the stack, building our number
+
+final step is to str_replace IIII with IV, VIV with IX, etc
+[another way for larger numbers would be to loop through all the keys in the array who have '4' of a character and shift things round before creating out number]
+for speed, I went with the str_replace, though I wouldnt necessarily do this in a production environment
+
+I added in a couple of helper functions:
+one to validate the roman numeral contains only MCDLXV or I characters
+one to validate that the int is < max val (default 3999) and is infact an int
+
+code includes try / catch loops with exception handling
+while loops
+foreach loops
+arrays
+variables
+switch statements
+oo things (eg data available within the scope of the class, though doesnt have any private methods etc)
+
+I have included some phpunit tests (though they arent extensive, but demonstrate a few tests for each of the methods in the class implementation, including testing for expected exceptions)
+
+
+There is an api (very basic, without proper validation, other than the built-in validation in the php class) that accesses the generate and parse methods of the class (returns data in json format)
+the api is used in the frontend as inputs are entered the data is queried and returned via a jquery ajax call and displayed in a results box
+I made one form for each of the two parse and generate methods
 
 -- notes
+there is no roman number for 0
 while this task is designed to build some code from scratch with tests, etc, in a production environment its not always advisable to re-invent the wheel:
 the zend framework 1 has a comprehensive library for all sorts of conversions
 http://framework.zend.com/manual/1.0/en/zend.measure.types.html
