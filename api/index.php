@@ -6,11 +6,11 @@ $roman_numeral = new RomanNumeral();
 
 switch($_REQUEST['method']){
 	case parse:
-	    $result = $roman_numeral->parse($_REQUEST['number']);
+	    $result = $roman_numeral->parse((string) $_REQUEST['number']);
 	    break;
 	case generate:
-	    $result = $roman_numeral->generate($_REQUEST['number']);
+	    $result = $roman_numeral->generate((int) $_REQUEST['number']);
 	    break;
 }
 
-return json_encode($result);
+echo json_encode($result);
