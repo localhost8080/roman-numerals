@@ -4,13 +4,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/classes/RomanNumeralGenerator.php';
 
 $roman_numeral = new RomanNumeral();
 
-print_r($_POST);
-
-switch($_POST['method']){
+switch($_REQUEST['method']){
 	case parse:
-	    $roman_numeral->parse();
+	    $result = $roman_numeral->parse($_REQUEST['number']);
 	    break;
 	case generate:
-	    $roman_numeral->generate();
+	    $result = $roman_numeral->generate($_REQUEST['number']);
 	    break;
 }
+
+return json_encode($result);
