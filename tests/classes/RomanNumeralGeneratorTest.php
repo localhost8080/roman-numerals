@@ -32,6 +32,27 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         $result = $a->parse('VI');
         // test
         $this->assertEquals(6,$result);
+
+        $result = $a->parse('X');
+        // test
+        $this->assertEquals(10,$result);
+        
+        $result = $a->parse('IX');
+        // test
+        $this->assertEquals(9,$result);
+        
+        $result = $a->parse('XI');
+        // test
+        $this->assertEquals(11,$result);
+        
+        $result = $a->parse('XX');
+        // test
+        $this->assertEquals(20,$result);
+        
+        $result = $a->parse('XIX');
+        // test
+        $this->assertEquals(19,$result);
+        
     }
 
 }

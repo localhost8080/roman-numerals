@@ -47,27 +47,29 @@ class RomanNumeral implements RomanNumeralGenerator
         // reverse the $string -- note that this function is not multibyte safe,
         // but MCXVI and 0-9 are not multibyte characters...
         // on first run we need to set the 'previous value' to be 0
-        $previous_value = 0; 
+        $previous_value = 0;
         $string = strrev($string);
         // drop the characters from the string into an array -- this allows us to foreach
-        // the array $letters will have the roman letter as the value in the k/v/ pair 
+        // the array $letters will have the roman letter as the value in the k/v/ pair
         $letters = str_split($string);
         // loop through each letter
         foreach ($letters as $key => $value) {
             // there are a few ways to do this now:
             // we could merge the arrays and sum all the parts
             // we could take each index one at a time and sum them
-            // one thing we have to do - if the current number is 
+            // one thing we have to do - if the current number is
             // less than the previous number then we have to subtract it from the running total
             // this is the actual number that the letter corresponds to
             $current_value = $this->data[$value];
             // check if the current_vale is less than the previous one..
-            if($current_value < $previous_value){
-            	// if this value is less than the previous one, subtract
+            if ($current_value < $previous_value) {
+                // if this value is less than the previous one, subtract
                 $running_total = $running_total - $current_value;
             } else {
-            	$running_total = $running_total + $current_value;
+                $running_total = $running_total + $current_value;
             }
+            // set the previous value
+            $previous_value = $current_value;
         }
         // return the running total [the value of the string]
         return $running_total;
