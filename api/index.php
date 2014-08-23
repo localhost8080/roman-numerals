@@ -4,7 +4,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/classes/RomanNumeralGenerator.php';
 
 $roman_numeral = new RomanNumeral();
 
-// this could be simplified 
+// this could be simplified
+// also, we dont sanitise the $_REQUEST
+// though there are loads of ways to do it
+
 switch($_REQUEST['method']){
 	case parse:
 	    $result = $roman_numeral->parse((string) $_REQUEST['string']);

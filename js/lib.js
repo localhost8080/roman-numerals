@@ -10,6 +10,7 @@ $(function() {
 
 // these could be simplified and generalised;
 // eg call_api /api?method={$_REQUEST['method']}
+// also, there should be error checking and sanitisation of user input at this stage
 
 function call_parse_api(object) {
     // call the parse function through our mini api
