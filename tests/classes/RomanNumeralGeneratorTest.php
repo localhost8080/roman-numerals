@@ -196,7 +196,6 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
             $result = $expected->getMessage();
         }
         $this->assertEquals('Please enter numbers only (greater than 0).', $result);
-        
         // not a valid roman number
         try {
             // check if valid

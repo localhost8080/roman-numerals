@@ -175,7 +175,8 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function validate_arabic($integer, $max = 3999)
     {
-        // check if not an integer, then throw exception (we cant actually use is_int because when being passed from json,
+        // check if not an integer, then throw exception (we cant actually use is_int because when being passed from
+        // json,
         // our number is a string
         // and is_numeric wont catch floats, so we have to be prepaired to work on strings)
         // regex built here: http://regex101.com/r/vC8mP0/3
@@ -184,7 +185,7 @@ class RomanNumeral implements RomanNumeralGenerator
         if (! preg_match($pattern, $integer)) {
             throw new Exception('Please enter numbers only (greater than 0).');
         }
-        // check if its base10 int value is <= $max, if not then throw exception 
+        // check if its base10 int value is <= $max, if not then throw exception
         if (intval($integer, 10) > $max) {
             throw new Exception("Number too large, max value $max.");
         }
