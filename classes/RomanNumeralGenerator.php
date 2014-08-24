@@ -181,7 +181,7 @@ class RomanNumeral implements RomanNumeralGenerator
         // regex built here: http://regex101.com/r/vC8mP0/1
         $pattern = '/^[1-9]+$/';
         if (! preg_match($pattern, $integer)) {
-            throw new Exception('Please enter numbers only.');
+            throw new Exception('Please enter numbers only (greater than 0).');
         }
         // check if its base10 int value is <= $max, if not then return false
         if (intval($integer, 10) > $max) {
