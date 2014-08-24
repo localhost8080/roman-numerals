@@ -13,10 +13,12 @@ Jump to:
 
 ##Install:
 php 5.4 or 5.5 (though doesnt use namespaces, so should work on 5.3)
+A web server apable of running php (apache, lighthttpd, nginx, etc)
 
     git clone https://github.com/localhost8080/roman-numerals.git
 
-navigate to [vhost]/index.php
+into a vhost
+navigate to [vhost] in your preferred browser.
 
 -----------
 
@@ -49,11 +51,11 @@ Rather than use one of those (they should be fine with testing) I have written m
 Using the PEAR or ZEND implementations would probably be safer, but thats outside the scope of this 
 task.
 
-The general method in this function is to populate an array with 'letter' => 'value' pairs and compare from right to left, 
+The general method in this function is to populate an array with 'letter' => 'value' pairs and compare to a reference array, 
 summing as we go (or if the next digit is less than the current digit, subtract it from the current digit).
 
-eg XIV becomes (rtl) VIX becomes 5-1+10 = 14
-this then becomes pretty easy and is just an if / else
+eg XIV becomes 5-1+10 = 14
+this then becomes pretty easy and is just an if / else to determine if we add or subtract
 
 ### generate function:
 Generates a roman number from an int.
@@ -114,15 +116,16 @@ Code includes:
  - Switch statements
  - Basic Oo things (eg inheritance, data available within the scope of the class, though doesnt have any private methods / isnt a singleton, doesnt need a constructor, etc etc)
 
-there is no roman number for 0
+There is no roman number for 0
 
-while this task is designed to build some code from scratch with tests, etc, in a production environment its not always advisable to re-invent the wheel:
-the zend framework 1 has a comprehensive library for all sorts of conversions (here)[http://framework.zend.com/manual/1.0/en/zend.measure.types.html]
+While this task is designed to build some code from scratch with tests, etc, in a production environment its not always advisable to re-invent the wheel:
+the zend framework 1 has a comprehensive library for all sorts of conversions [here](http://framework.zend.com/manual/1.0/en/zend.measure.types.html)
 this component could easilly be used on on its own or alongside zf2 within a larger application, eg using composer
 
-there is also a PEAR library for roman numeral conversion (though the code is no longer maintained, it suports conversion of numbers up to 5,999,999)
+There is also a PEAR library for roman numeral conversion (though the code is no longer maintained, it suports conversion of numbers up to 5,999,999)
 
-there is no testing of the lib.js (easily fixed with jslint)
-there is no testing of the html output (generally run through w3 validator or equivalent)
+There is no testing of the lib.js in the travis system, though it has been tested using brackets editor and jsHint locally
+JsHint can be included in the travis build process to automate this task.
+There is no scripted testing of the html output (generally run through w3 validator or equivalent)
 
 
