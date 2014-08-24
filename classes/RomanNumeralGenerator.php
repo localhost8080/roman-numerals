@@ -104,7 +104,7 @@ class RomanNumeral implements RomanNumeralGenerator
     {
         try {
             // check if valid
-            $valid = $this->validate_roman($string);
+            $this->validate_roman($string);
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -115,7 +115,7 @@ class RomanNumeral implements RomanNumeralGenerator
         // on first run we need to set the 'previous value' to be 0
         $previous_value = 0;
         // drop the UPPERCASE versions of characters from the string into an array -- this allows us to foreach
-        $string = strrev($string);
+        $string = strrev(strtoupper($string));
         // the array $letters will have the roman letter as the value in the k/v/ pair
         $letters = str_split($string);
         // loop through each letter
@@ -178,7 +178,7 @@ class RomanNumeral implements RomanNumeralGenerator
         // check if not an integer, then return false (we cant actually use is_int because when being passed from json,
         // our number is a string
         // and is_numeric wont catch floats, so we have to be prepaired to work on strings)
-        $pattern = '/[1-9]/';
+        $pattern = '/^[1-9]+$/';
         if (! preg_match($pattern, $integer)) {
             throw new Exception('Please enter numbers only.');
         }
