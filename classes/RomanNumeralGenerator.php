@@ -97,7 +97,7 @@ class RomanNumeral implements RomanNumeralGenerator
      *            adds.
      *            
      *            this function doesnt check to see if we have a valid roman nummeral, that should be in a validate
-     *            function
+     *            function (eg IIII isnt valid, it sould be IV)
      *            -- ill add one in if I have time
      */
     public function parse($string)
@@ -152,7 +152,7 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function validate_roman($string)
     {
-        // check if its a string, if not, return false
+        // check if its a string, if not, throw exception
         if (! is_string($string)) {
             throw new Exception('Please enter strings only.');
         }
@@ -175,7 +175,7 @@ class RomanNumeral implements RomanNumeralGenerator
      */
     public function validate_arabic($integer, $max = 3999)
     {
-        // check if not an integer, then return false (we cant actually use is_int because when being passed from json,
+        // check if not an integer, then throw exception (we cant actually use is_int because when being passed from json,
         // our number is a string
         // and is_numeric wont catch floats, so we have to be prepaired to work on strings)
         // regex built here: http://regex101.com/r/vC8mP0/1
@@ -183,7 +183,7 @@ class RomanNumeral implements RomanNumeralGenerator
         if (! preg_match($pattern, $integer)) {
             throw new Exception('Please enter numbers only (greater than 0).');
         }
-        // check if its base10 int value is <= $max, if not then return false
+        // check if its base10 int value is <= $max, if not then throw exception 
         if (intval($integer, 10) > $max) {
             throw new Exception("Number too large, max value $max.");
         }
