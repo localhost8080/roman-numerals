@@ -39,7 +39,7 @@ class RomanNumeral implements RomanNumeralGenerator
     public function generate($integer)
     {
         try {
-            // check if valid, though we are casting it as an int, so it wont fail that part :|
+            // check if valid
             $this->validate_arabic($integer);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -178,8 +178,9 @@ class RomanNumeral implements RomanNumeralGenerator
         // check if not an integer, then throw exception (we cant actually use is_int because when being passed from json,
         // our number is a string
         // and is_numeric wont catch floats, so we have to be prepaired to work on strings)
-        // regex built here: http://regex101.com/r/vC8mP0/1
-        $pattern = '/^[1-9]+$/';
+        // regex built here: http://regex101.com/r/vC8mP0/3
+        // number only, starting with 1-9, followed by numbers between 0 and 9 zero or more times
+        $pattern = '/^([1-9])([0-9])*$/';
         if (! preg_match($pattern, $integer)) {
             throw new Exception('Please enter numbers only (greater than 0).');
         }
