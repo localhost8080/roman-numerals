@@ -67,7 +67,7 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         } catch (Exception $expected) {
             $result = $expected->getMessage();
         }
-        $this->assertEquals('Please enter numbers only.', $result);
+        $this->assertEquals('Please enter numbers only (greater than 0).', $result);
     }
 
     public function testparse()
@@ -187,7 +187,7 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         } catch (Exception $expected) {
             $result = $expected->getMessage();
         }
-        $this->assertEquals('Please enter numbers only.', $result);
+        $this->assertEquals('Please enter numbers only (greater than 0).', $result);
         // not a valid roman number
         try {
             // check if valid
@@ -195,6 +195,15 @@ class RomanNumeralTest extends PHPUnit_Framework_TestCase
         } catch (Exception $expected) {
             $result = $expected->getMessage();
         }
-        $this->assertEquals('Please enter numbers only.', $result);
+        $this->assertEquals('Please enter numbers only (greater than 0).', $result);
+        
+        // not a valid roman number
+        try {
+            // check if valid
+            $result = $a->validate_arabic(0);
+        } catch (Exception $expected) {
+            $result = $expected->getMessage();
+        }
+        $this->assertEquals('Please enter numbers only (greater than 0).', $result);
     }
 }
